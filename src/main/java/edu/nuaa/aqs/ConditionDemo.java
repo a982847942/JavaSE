@@ -23,6 +23,7 @@ class Bamboo {
             while (flag) { // 如果有竹子
                 try {
                     producerCondition.await(); // 挂起生产竹子的线程
+//                    producerCondition.awaitUninterruptibly();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
