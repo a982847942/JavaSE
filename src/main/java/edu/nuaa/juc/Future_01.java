@@ -32,9 +32,7 @@ public class Future_01 {
         Stream<String> stream = Stream.<String>of(new String[]{"a", "b", "c"});
         stream.map(String::toUpperCase).forEach(System.out::println);
 
-
-
-
+        
 
 //        new A();
         //这里的theUnsafe就是我们源码中的那个theUnsafe

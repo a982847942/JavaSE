@@ -9,6 +9,19 @@ import java.util.concurrent.CompletableFuture;
  */
 public class CompletableFuture_03 {
     public static void main(String[] args) throws Exception {
+        /**
+         * ①求和100内的所有偶数
+         * ②基于第一个任务的结果再加上100内奇数总值计算100内所有数字的总和
+         * ③基于第二个任务的结果除0抛出一个异常
+         * ④使用handle创建一个可以在上个任务抛出异常时依旧执行的任务
+         * ⑤使用thenCompose创建一个基于上个任务返回值+1的任务
+         * ⑥使用thenRun创建了一个没有返回值的任务
+         *
+         * ①thenApply类：此类方法可以基于上一个任务再创建一个新的有返回型任务。
+         * ②handle类：与thenApply类作用相同，不同点在于thenApply类方法只能在上一个任务执行正常的情况下才能执行，当上一个任务执行抛出异常后则不会执行。而handle类在上个任务出现异常的情况下也可以接着执行。
+         * ③thenRun类：此类方法可以基于上一个任务再创建一个新的无返回型任务。
+         * ④thenCompose类：与thenApply类大致相同，不同点在于每次向下传递都是新的CompletableFuture对象，而thenApply向下传递的都是同一个CompletableFuture对象对象
+         */
         CompletableFuture cf =
                 CompletableFuture.supplyAsync(CompletableFuture_03::evenNumbersSum)
                         // 链式编程：基于上个任务的返回继续执行新的任务
